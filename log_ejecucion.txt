@@ -14,3 +14,40 @@
 [2026-11-25 00:00:05] 01_extraccion_api | guardado PN07809NM_2018-2025_2024200488G.json | SHA-256 076dcf5adbf2c2a4c8250a7beb4e15a96de0b9ee37318ccfdfda7d74621b8179
 [2026-11-25 00:00:05] 01_extraccion_api | guardado PN07809NM_2018-2025_2024200488G.csv | SHA-256 f14a6909d0236f5b802d0c5d485d1a1c4f034d6c6ca8badb3c9ced2b34a57d0b
 [2026-11-25 00:00:05] 01_extraccion_api | fin correcto
+[2026-11-25 11:18:17] 02_scraping_web | inicio
+[2026-11-25 11:18:17] 02_scraping_web | parametros: MODO_PRUEBA=True | tramo 2018-2025 | 3 meses | pausa 1.5s
+[2026-11-25 11:18:17] 02_scraping_web | --- via 2a: cuadros XLS del boletin ---
+[2026-11-25 11:18:17] 02_scraping_web | B-2359-en2018.XLS | HTTP 200 | 81408 bytes | SHA-256 221e1b70d61dab3e5e766c27d5bb945d6cd900d1fce560714df782cb65f66c15
+[2026-11-25 11:18:19] 02_scraping_web | B-2362-en2018.XLS | HTTP 200 | 56320 bytes | SHA-256 fdb3742798a3f5f72bb65020fd01601efb70bdba9398cbade2a16c6f3d42e143
+[2026-11-25 11:18:21] 02_scraping_web | B-2359-fe2018.XLS | HTTP 200 | 81408 bytes | SHA-256 dd7030f79cd503fba3b66827ced1d36a8d5d55e112d5d980b2eb87c7f84f4f5a
+[2026-11-25 11:18:22] 02_scraping_web | B-2362-fe2018.XLS | HTTP 200 | 55808 bytes | SHA-256 5834f951ad15189f1b79d00d440e40c3346da71eaf6c11c9bd1dd1f322d98b0c
+[2026-11-25 11:18:24] 02_scraping_web | B-2359-ma2018.XLS | HTTP 200 | 79872 bytes | SHA-256 db64ce7c755d279cefeac375ddfac2df15e6e70452be76d05569865f0df43b05
+[2026-11-25 11:18:26] 02_scraping_web | B-2362-ma2018.XLS | HTTP 200 | 54784 bytes | SHA-256 d4b5d82ffc330f49b0d3d92af28d2edc24a4c5510bbddc41e22055e33e9ee2e9
+[2026-11-25 11:18:27] 02_scraping_web | via 2a: 6 guardados | 0 ya existian | 0 fallidos
+[2026-11-25 11:18:27] 02_scraping_web | --- via 2b: tasas por empresa bancaria ---
+[2026-11-25 11:18:51] 02_scraping_web | FALLO tasas_2018-01.html tras 10 dias | 31/01: no se encontro la caja de texto de la fecha. Poner MODO_DIAGNOSTICO = True y enviar la salida. | 30/01: no se encontro la caja de texto de la fecha. Poner MODO_DIAGNOSTICO = True y enviar la salida. | 29/01: no se encontro la caja de texto de la fecha. Poner MODO_DIAGNOSTICO = True y enviar la salida.
+[2026-11-25 11:19:17] 02_scraping_web | FALLO tasas_2018-02.html tras 10 dias | 28/02: no se encontro la caja de texto de la fecha. Poner MODO_DIAGNOSTICO = True y enviar la salida. | 27/02: no se encontro la caja de texto de la fecha. Poner MODO_DIAGNOSTICO = True y enviar la salida. | 26/02: no se encontro la caja de texto de la fecha. Poner MODO_DIAGNOSTICO = True y enviar la salida.
+[2026-11-25 11:19:43] 02_scraping_web | FALLO tasas_2018-03.html tras 10 dias | 31/03: no se encontro la caja de texto de la fecha. Poner MODO_DIAGNOSTICO = True y enviar la salida. | 30/03: no se encontro la caja de texto de la fecha. Poner MODO_DIAGNOSTICO = True y enviar la salida. | 29/03: no se encontro la caja de texto de la fecha. Poner MODO_DIAGNOSTICO = True y enviar la salida.
+[2026-11-25 11:19:43] 02_scraping_web | via 2b: 0 guardados | 0 ya existian | 3 fallidos
+[2026-11-25 11:19:43] 02_scraping_web | fin con 3 fallos; revisar las lineas FALLO del log
+[2026-11-25 15:16:12] 02_scraping_web | inicio
+[2026-11-25 15:16:12] 02_scraping_web | parametros: MODO_PRUEBA=True | tramo 2018-2025 | 3 meses | pausa 1.5s
+[2026-11-25 15:16:12] 02_scraping_web | MODO_DIAGNOSTICO: abriendo el formulario de tasas
+[2026-11-25 15:16:13] 02_scraping_web | HTTP 200 | 504638 bytes
+[2026-11-25 15:16:13] 02_scraping_web | HTML guardado en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\datos_crudos\sbs_tasas\_diagnostico_formulario.html
+[2026-11-25 15:16:13] 02_scraping_web | titulo de la pagina: 
+[2026-11-25 15:16:13] 02_scraping_web | formularios: 1
+[2026-11-25 15:16:13] 02_scraping_web |   <form action=./TIActivaTipoCreditoEmpresa.aspx?tip=B method=post>
+[2026-11-25 15:16:13] 02_scraping_web | se encontraron 18 campos <input>:
+[2026-11-25 15:16:13] 02_scraping_web | fecha que declara la pagina ahora: 24/11/2026
+[2026-11-25 15:16:13] 02_scraping_web | contiene la palabra 'Descuentos': True
+[2026-11-25 17:31:06] 02_scraping_web | inicio
+[2026-11-25 17:31:06] 02_scraping_web | parametros: MODO_PRUEBA=True | tramo 2018-2025 | 3 meses | pausa 1.5s
+[2026-11-25 17:31:06] 02_scraping_web | --- via 2a: cuadros XLS del boletin ---
+[2026-11-25 17:31:06] 02_scraping_web | via 2a: 0 guardados | 6 ya existian | 0 fallidos
+[2026-11-25 17:31:06] 02_scraping_web | --- via 2b: tasas por empresa bancaria ---
+[2026-11-25 17:31:53] 02_scraping_web | FALLO tasas_2018-01.html tras 10 dias | 31/01: se pidio 31/01/2018 y la pagina declara 24/11/2026, que es de otro mes | 30/01: se pidio 30/01/2018 y la pagina declara 24/11/2026, que es de otro mes | 29/01: se pidio 29/01/2018 y la pagina declara 24/11/2026, que es de otro mes
+[2026-11-25 17:32:42] 02_scraping_web | FALLO tasas_2018-02.html tras 10 dias | 28/02: se pidio 28/02/2018 y la pagina declara 24/11/2026, que es de otro mes | 27/02: se pidio 27/02/2018 y la pagina declara 24/11/2026, que es de otro mes | 26/02: se pidio 26/02/2018 y la pagina declara 24/11/2026, que es de otro mes
+[2026-11-25 17:33:31] 02_scraping_web | FALLO tasas_2018-03.html tras 10 dias | 31/03: se pidio 31/03/2018 y la pagina declara 24/11/2026, que es de otro mes | 30/03: se pidio 30/03/2018 y la pagina declara 24/11/2026, que es de otro mes | 29/03: se pidio 29/03/2018 y la pagina declara 24/11/2026, que es de otro mes
+[2026-11-25 17:33:31] 02_scraping_web | via 2b: 0 guardados | 0 ya existian | 3 fallidos
+[2026-11-25 17:33:31] 02_scraping_web | fin con 3 fallos; revisar las lineas FALLO del log
