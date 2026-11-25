@@ -42,8 +42,14 @@ N_PERIODOS_ESPERADOS = 96
 
 # Control de identidad de la serie. PN07829NM tiene el mismo nombre corto pero
 # pertenece al cuadro en moneda extranjera: estas palabras lo separan.
-PALABRAS_OBLIGATORIAS = ("preferencial", "corporativa", "90")
-PALABRAS_PROHIBIDAS = ("extranjera", "dolares")
+#
+# La corrida del 2026-11-24 mostro que el nombre completo que devuelve la API es
+#   "Tasas de interes activas y pasivas promedio de las empresas bancarias en MN
+#    (terminos efectivos anuales) - Activas - Preferencial Corporativa a 90 dias"
+# El cuadro gemelo dice "en ME", no "extranjera", asi que la moneda se verifica
+# exigiendo "en mn" y no confiando en la lista de palabras prohibidas.
+PALABRAS_OBLIGATORIAS = ("preferencial", "corporativa", "90", "en mn")
+PALABRAS_PROHIBIDAS = ("en me", "extranjera", "dolares")
 
 URL_BASE = "https://estadisticas.bcrp.gob.pe/estadisticas/series/api"
 CABECERAS = {

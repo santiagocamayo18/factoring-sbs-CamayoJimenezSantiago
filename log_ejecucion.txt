@@ -5,3 +5,12 @@
 [2026-11-24 23:09:22] 01_extraccion_api | guardado PN07809NM_2018-2025_2024200488G.json | SHA-256 076dcf5adbf2c2a4c8250a7beb4e15a96de0b9ee37318ccfdfda7d74621b8179
 [2026-11-24 23:09:22] 01_extraccion_api | guardado PN07809NM_2018-2025_2024200488G.csv | SHA-256 f14a6909d0236f5b802d0c5d485d1a1c4f034d6c6ca8badb3c9ced2b34a57d0b
 [2026-11-24 23:09:22] 01_extraccion_api | fin correcto
+[2026-11-25 00:00:04] 01_extraccion_api | inicio
+[2026-11-25 00:00:05] 01_extraccion_api | GET https://estadisticas.bcrp.gob.pe/estadisticas/series/api/PN07809NM/json/2018-1/2025-12 -> HTTP 200 (4554 bytes)
+[2026-11-25 00:00:05] 01_extraccion_api | serie verificada: 'Tasas de interés activas y pasivas promedio de las empresas bancarias en MN (términos efectivos anuales) - Activas - Preferencial Corporativa a 90 días'
+[2026-11-25 00:00:05] 01_extraccion_api | periodos validados: 96 (Ene.2018 a Dic.2025)
+[2026-11-25 00:00:05] 01_extraccion_api | respaldo: PN07809NM_2018-2025_2024200488G.json -> PN07809NM_2018-2025_2024200488G_previo_20261125_000005.json
+[2026-11-25 00:00:05] 01_extraccion_api | respaldo: PN07809NM_2018-2025_2024200488G.csv -> PN07809NM_2018-2025_2024200488G_previo_20261125_000005.csv
+[2026-11-25 00:00:05] 01_extraccion_api | guardado PN07809NM_2018-2025_2024200488G.json | SHA-256 076dcf5adbf2c2a4c8250a7beb4e15a96de0b9ee37318ccfdfda7d74621b8179
+[2026-11-25 00:00:05] 01_extraccion_api | guardado PN07809NM_2018-2025_2024200488G.csv | SHA-256 f14a6909d0236f5b802d0c5d485d1a1c4f034d6c6ca8badb3c9ced2b34a57d0b
+[2026-11-25 00:00:05] 01_extraccion_api | fin correcto
