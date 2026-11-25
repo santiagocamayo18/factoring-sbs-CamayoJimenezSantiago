@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import calendar
 import hashlib
+import json
 import re
 import sys
 import time
@@ -124,6 +125,15 @@ class ErrorEstructural(ValidacionFallida):
 
     No depende de la fecha pedida, asi que reintentar con otro dia solo
     desperdicia solicitudes. Detiene la via de inmediato.
+    """
+
+
+class FechaNoObedecida(ValidacionFallida):
+    """El formulario respondio, pero con un mes distinto al pedido.
+
+    Probar otro dia del mismo mes tampoco funcionaria, asi que se abandona el
+    mes al primer intento. Si ocurre en varios meses seguidos, el problema es
+    del envio y no de la fecha: entonces se detiene la via.
     """
 
 
@@ -332,7 +342,7 @@ def validar_reporte(html: str, pedida: date) -> str:
 
     dd, mm, aaaa = (int(x) for x in declarada.split("/"))
     if (aaaa, mm) != (pedida.year, pedida.month):
-        raise ValidacionFallida(
+        raise FechaNoObedecida(
             f"se pidio {pedida:%d/%m/%Y} y la pagina declara {declarada}, "
             f"que es de otro mes"
         )
@@ -362,6 +372,22 @@ def consultar_fecha(sesion: requests.Session, html_actual: str, fecha: date) -> 
     datos[iso] = fecha.strftime("%Y-%m-%d")
     if visible:
         datos[visible] = fecha.strftime("%d/%m/%Y")
+        # El RadDateInput de Telerik no lee la caja de texto: lee este JSON
+        # oculto. Si no se envia, el servidor se queda con su fecha por
+        # defecto y devuelve el reporte de hoy, cosa que ya ocurrio.
+        # El nombre usa guiones bajos, no "$", porque deriva del id.
+        campo_estado = visible.replace("$", "_") + "_ClientState"
+        if campo_estado in datos:
+            datos[campo_estado] = json.dumps({
+                "enabled": True,
+                "emptyMessage": "",
+                "validationText": fecha.strftime("%Y-%m-%d") + "-00-00-00",
+                "valueAsString": fecha.strftime("%Y-%m-%d") + "-00-00-00",
+                "minDateStr": "1000-01-01-00-00-00",
+                "maxDateStr": "2099-12-31-00-00-00",
+                "lastSetTextBoxValue": fecha.strftime("%d/%m/%Y"),
+            })
+
     datos[boton] = "Consultar"
     datos.setdefault("__EVENTTARGET", "")
     datos.setdefault("__EVENTARGUMENT", "")
@@ -386,6 +412,7 @@ def descargar_tasas(sesion: requests.Session) -> tuple[int, int, int]:
     # Estado del formulario: se abre una vez y se actualiza con la respuesta de
     # cada consulta, para no volver a pedir la pagina en cada mes.
     html_actual = abrir_formulario(sesion)
+    meses_desobedecidos = 0
 
     for anio, mes in meses_a_recorrer():
         destino = DIR_TASAS / f"tasas_{anio}-{mes:02d}.html"
@@ -420,6 +447,12 @@ def descargar_tasas(sesion: requests.Session) -> tuple[int, int, int]:
                 # La pagina no tiene la forma esperada. Probar otro dia no lo
                 # arregla, asi que se corta la via en vez de gastar solicitudes.
                 raise
+            except FechaNoObedecida as e:
+                # El formulario respondio con otro mes. Otro dia del mismo mes
+                # daria igual, asi que se abandona este mes al primer intento.
+                motivos.append(f"{fecha:%d/%m}: {e}")
+                html_actual = abrir_formulario(sesion)
+                break
             except ValidacionFallida as e:
                 motivos.append(f"{fecha:%d/%m}: {e}")
                 # Si la respuesta no sirvio, el estado puede haber quedado
@@ -427,9 +460,20 @@ def descargar_tasas(sesion: requests.Session) -> tuple[int, int, int]:
                 html_actual = abrir_formulario(sesion)
             time.sleep(PAUSA)
 
-        if not guardado:
-            registrar(f"FALLO {destino.name} tras {DIAS_RETROCESO} dias | " + " | ".join(motivos[:3]))
+        if guardado:
+            meses_desobedecidos = 0
+        else:
+            registrar(f"FALLO {destino.name} | " + " | ".join(motivos[:3]))
             fallidos += 1
+            if motivos and "de otro mes" in motivos[-1]:
+                meses_desobedecidos += 1
+                if meses_desobedecidos >= 2:
+                    raise ErrorEstructural(
+                        "el formulario devuelve siempre la misma fecha en dos meses "
+                        "seguidos: el envio no esta surtiendo efecto. Se detiene la "
+                        "via para no gastar 96 consultas inutiles. Poner "
+                        "MODO_DIAGNOSTICO = True y enviar la salida."
+                    )
 
     return guardados, omitidos, fallidos
 

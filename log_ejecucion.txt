@@ -51,3 +51,13 @@
 [2026-11-25 17:33:31] 02_scraping_web | FALLO tasas_2018-03.html tras 10 dias | 31/03: se pidio 31/03/2018 y la pagina declara 24/11/2026, que es de otro mes | 30/03: se pidio 30/03/2018 y la pagina declara 24/11/2026, que es de otro mes | 29/03: se pidio 29/03/2018 y la pagina declara 24/11/2026, que es de otro mes
 [2026-11-25 17:33:31] 02_scraping_web | via 2b: 0 guardados | 0 ya existian | 3 fallidos
 [2026-11-25 17:33:31] 02_scraping_web | fin con 3 fallos; revisar las lineas FALLO del log
+[2026-11-25 18:00:27] 02_scraping_web | inicio
+[2026-11-25 18:00:27] 02_scraping_web | parametros: MODO_PRUEBA=True | tramo 2018-2025 | 3 meses | pausa 1.5s
+[2026-11-25 18:00:27] 02_scraping_web | --- via 2a: cuadros XLS del boletin ---
+[2026-11-25 18:00:27] 02_scraping_web | via 2a: 0 guardados | 6 ya existian | 0 fallidos
+[2026-11-25 18:00:27] 02_scraping_web | --- via 2b: tasas por empresa bancaria ---
+[2026-11-25 18:00:31] 02_scraping_web | tasas_2018-01.html | pedida 31/01/2018 | declarada 31/01/2018 | 468413 bytes | SHA-256 75a8bb1bfc2a5bbbd404d7269f44e19198749ca5fb01c55fb3c6ad25b9780f78
+[2026-11-25 18:00:34] 02_scraping_web | tasas_2018-02.html | pedida 28/02/2018 | declarada 28/02/2018 | 468484 bytes | SHA-256 b376a4f1e0e1b71feace17cd042b07f9c15f84b23364cda3676f7c749f7bb89b
+[2026-11-25 18:00:50] 02_scraping_web | tasas_2018-03.html | pedida 28/03/2018 | declarada 28/03/2018 | 468504 bytes | SHA-256 6f987c7ab165fef8c22925d984a3461fac0788e008c58f5cb2972bc15540dabb
+[2026-11-25 18:00:50] 02_scraping_web | via 2b: 3 guardados | 0 ya existian | 0 fallidos
+[2026-11-25 18:00:50] 02_scraping_web | fin correcto
