@@ -5,9 +5,9 @@
 
 """Via 2 - Extraccion desde la SBS por dos mecanismos distintos.
 
-Via 2a, descarga programatica: 192 archivos XLS del boletin de banca multiple
-        (cuadros B-2359, saldos por modalidad, y B-2362, morosidad por modalidad)
-        desde URL directas con patron conocido.
+Via 2a, descarga programatica: 288 archivos XLS del boletin de banca multiple
+        (B-2359 saldos por modalidad, B-2362 morosidad por modalidad y
+        B-230803 numero de deudores) desde URL directas con patron conocido.
 
 Via 2b, scraping de formulario: 96 consultas al portal SAEE, que entrega la tasa
         activa por tipo de credito y empresa bancaria. La pagina es un formulario
@@ -65,7 +65,10 @@ HACER_TASAS = True
 
 # --- Via 2a ---------------------------------------------------------------
 URL_XLS = "https://intranet2.sbs.gob.pe/estadistica/financiera/{anio}/{carpeta}/{cuadro}-{cod}{anio}.XLS"
-CUADROS = ("B-2359", "B-2362")
+# B-2359   saldos de creditos por tipo, modalidad y moneda  -> variable 1
+# B-2362   morosidad por tipo de credito y modalidad        -> variable 3
+# B-230803 numero de deudores segun tipo de credito         -> variable 5
+CUADROS = ("B-2359", "B-2362", "B-230803")
 
 # Carpeta y codigo de cada mes, verificados contra enlaces reales del portal.
 # Setiembre va sin "p", tanto en la carpeta como en el codigo.
