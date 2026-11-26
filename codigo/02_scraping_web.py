@@ -55,7 +55,7 @@ ANIO_CORTE = 2025
 MODO_DIAGNOSTICO = False
 # MODO_PRUEBA: baja solo los tres primeros meses de ANIO_DESDE, para comprobar
 #   que todo funciona antes de soltar la corrida completa.
-MODO_PRUEBA = True
+MODO_PRUEBA = False
 # Tramos: permite correr año por año en vez de los ocho de una vez.
 ANIO_DESDE = 2018
 ANIO_HASTA = 2025
