@@ -581,3 +581,51 @@
 [2026-11-27 03:17:37] 03_limpieza_datos |   sha256 787a7b5e0a7790ba36be79dc19795dc3c61515930d3ead438876f8b1f793154a
 [2026-11-27 03:17:37] 03_limpieza_datos | informe escrito en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\salidas\informe_limpieza.txt
 [2026-11-27 03:17:37] 03_limpieza_datos | fin
+[2026-11-27 03:34:18] 04_analisis | inicio
+[2026-11-27 03:34:19] 04_analisis | panel leido: 6324 filas, 96 meses, 20 entidades, 4 tipos
+[2026-11-27 03:34:19] 04_analisis | winsorizacion al 1% y 99%:
+[2026-11-27 03:34:19] 04_analisis |   tasa_descuento_pct         p1=  2.314 p99=  24.012  recorta 29 abajo y 29 arriba  (max 51.11 -> 24.01)
+[2026-11-27 03:34:19] 04_analisis |   tasa_tipo_pct              p1=  1.460 p99=  26.042  recorta 39 abajo y 40 arriba  (max 238.67 -> 26.04)
+[2026-11-27 03:34:19] 04_analisis |   morosidad_factoring_pct    p1=  0.000 p99= 100.000  recorta 2 abajo y 0 arriba  (max 100.00 -> 100.00)
+[2026-11-27 03:34:19] 04_analisis |   morosidad_tipo_pct         p1=  0.000 p99=  64.035  recorta 0 abajo y 48 arriba  (max 100.00 -> 64.03)
+[2026-11-27 03:34:19] 04_analisis | robustez: cruda contra winsorizada
+[2026-11-27 03:34:20] 04_analisis |   tasa agregada cruda      : media 7.329 %, max 11.433 %
+[2026-11-27 03:34:20] 04_analisis |   tasa agregada winsorizada: media 7.342 %, max 11.433 %
+[2026-11-27 03:34:20] 04_analisis |   diferencia maxima entre ambas en los 96 meses: 0.195 puntos porcentuales (mes 2021-05)
+[2026-11-27 03:34:20] 04_analisis |   correlacion entre las dos series: 0.99983
+[2026-11-27 03:34:20] 04_analisis | tablas descriptivas
+[2026-11-27 03:34:20] 04_analisis |   tabla tabla1_descriptivos: 11 filas -> csv y tex
+[2026-11-27 03:34:21] 04_analisis |   tabla tabla2_por_tipo_credito: 4 filas -> csv y tex
+[2026-11-27 03:34:21] 04_analisis |   tabla tabla3_entidades: 20 filas -> csv y tex
+[2026-11-27 03:34:21] 04_analisis |   tabla tabla4_winsorizacion: 4 filas -> csv y tex
+[2026-11-27 03:34:21] 04_analisis | modelo, ventana principal 2018-01 a 2024-09 (antes de los dos quiebres)
+[2026-11-27 03:34:21] 04_analisis |   (1) EF de unidad: n=2399, 9 bancos, R2 within=0.106, within contra dicotomicas difiere 3.1e-15
+[2026-11-27 03:34:26] 04_analisis |   (2) EF de unidad y de mes: n=2399, 9 bancos, R2 within=0.085, within contra dicotomicas difiere 2.7e-14
+[2026-11-27 03:34:31] 04_analisis |   (3) EF de unidad y de mes, tasa rezagada: n=2281, 9 bancos, R2 within=0.073, within contra dicotomicas difiere 1.2e-14
+[2026-11-27 03:34:36] 04_analisis |   (4) Primeras diferencias: n=2308, 9 bancos, R2 within=0.002, within contra dicotomicas difiere 2.5e-16
+[2026-11-27 03:34:36] 04_analisis |   tabla tabla5_modelo_panel: 11 filas -> csv y tex
+[2026-11-27 03:34:36] 04_analisis | modelo, ventana completa 2018-01 a 2025-12 (incluye los dos quiebres)
+[2026-11-27 03:34:36] 04_analisis |   (1) EF de unidad: n=2818, 10 bancos, R2 within=0.089, within contra dicotomicas difiere 1.1e-14
+[2026-11-27 03:34:43] 04_analisis |   (2) EF de unidad y de mes: n=2818, 10 bancos, R2 within=0.077, within contra dicotomicas difiere 4.6e-14
+[2026-11-27 03:34:49] 04_analisis |   (3) EF de unidad y de mes, tasa rezagada: n=2681, 9 bancos, R2 within=0.071, within contra dicotomicas difiere 1.5e-14
+[2026-11-27 03:34:54] 04_analisis |   (4) Primeras diferencias: n=2706, 9 bancos, R2 within=0.003, within contra dicotomicas difiere 4.1e-16
+[2026-11-27 03:34:54] 04_analisis |   tabla tabla6_modelo_robustez: 11 filas -> csv y tex
+[2026-11-27 03:34:54] 04_analisis | figuras
+[2026-11-27 03:35:00] 04_analisis |   figura fig1_evolucion_mercado: pdf, png y csv de respaldo
+[2026-11-27 03:35:05] 04_analisis |   figura fig2_por_tipo_credito: pdf, png y csv de respaldo
+[2026-11-27 03:35:08] 04_analisis |   figura fig3_factoring_vs_descuentos: pdf, png y csv de respaldo
+[2026-11-27 03:35:11] 04_analisis |   figura fig4_concentracion: pdf, png y csv de respaldo
+[2026-11-27 03:35:17] 04_analisis |   figura fig5_dispersion_entre_bancos: pdf, png y csv de respaldo
+[2026-11-27 03:35:22] 04_analisis |   figura fig6_deudores_y_morosidad: pdf, png y csv de respaldo
+[2026-11-27 03:35:27] 04_analisis |   figura fig7_precio_cantidad: pdf, png y csv de respaldo
+[2026-11-27 03:35:27] 04_analisis | listo: 7 figuras en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\salidas\figuras y 6 tablas en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\salidas\tablas
+[2026-11-27 03:35:27] 04_analisis | fin
+[2026-11-27 11:07:08] diagnostico_atipicos | inicio
+[2026-11-27 11:07:08] diagnostico_atipicos | informe escrito en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\salidas\diagnostico_atipicos.txt
+[2026-11-27 11:07:08] diagnostico_atipicos | fin
+[2026-11-27 11:09:11] verificar_quiebre_bcp | inicio
+[2026-11-27 11:09:12] verificar_quiebre_bcp | informe escrito en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\salidas\verificacion_quiebre_bcp.txt
+[2026-11-27 11:09:12] verificar_quiebre_bcp | fin
+[2026-11-27 11:13:07] verificar_quiebre_bcp | inicio
+[2026-11-27 11:13:07] verificar_quiebre_bcp | informe escrito en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\salidas\verificacion_quiebre_bcp.txt
+[2026-11-27 11:13:07] verificar_quiebre_bcp | fin

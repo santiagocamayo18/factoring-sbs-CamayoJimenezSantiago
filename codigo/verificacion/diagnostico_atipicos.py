@@ -5,7 +5,7 @@
 
 """Diagnostico de los valores atipicos que reporto la validacion del panel.
 
-Este script NO modifica nada. Solo lee datos_procesados/panel_factoring.csv y
+Este script NO modifica nada. Solo lee la base procesada y
 describe lo que encuentra, para decidir con datos a la vista si los valores
 extremos son atipicos reales de la fuente o un defecto del lector.
 
@@ -24,7 +24,7 @@ Como se distingue una cosa de la otra, con lo que imprime este script:
     mismo mes, o a la misma entidad todos los meses, o a un tipo de credito
     entero.
 
-Entradas : datos_procesados/panel_factoring.csv
+Entradas : datos_procesados/datos_procesados_<codigo>.csv
 Salidas  : salidas/diagnostico_atipicos.txt  (y el mismo texto en consola)
 """
 
@@ -57,8 +57,10 @@ RANGOS = {
 
 MAX_FILAS_LISTADAS = 20
 
-RAIZ = Path(__file__).resolve().parent.parent
-ARCHIVO_PANEL = RAIZ / "datos_procesados" / "panel_factoring.csv"
+# Este script vive en codigo/verificacion/, un nivel mas abajo que los cuatro
+# del flujo principal, asi que la raiz del proyecto queda tres niveles arriba.
+RAIZ = Path(__file__).resolve().parent.parent.parent
+ARCHIVO_PANEL = RAIZ / "datos_procesados" / f"datos_procesados_{MATRICULA}.csv"
 ARCHIVO_SALIDA = RAIZ / "salidas" / "diagnostico_atipicos.txt"
 ARCHIVO_LOG = RAIZ / "log_ejecucion.txt"
 

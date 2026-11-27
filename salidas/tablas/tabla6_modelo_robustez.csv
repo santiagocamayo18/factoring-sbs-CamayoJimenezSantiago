@@ -1,0 +1,12 @@
+Variable,(1),(2),(3),(4)
+Tasa de descuento (%),-0.0160 (0.0238),-0.0124 (0.0237),,
+"Tasa de descuento, mes t-1",,,-0.0036 (0.0141),
+"Tasa de descuento, mes t-2",,,0.0056 (0.0139),
+Variación de la tasa,,,,-0.0060 (0.0042)
+log(número de deudores),0.4788** (0.1594),0.4930** (0.1523),0.4818** (0.1513),0.0023 (0.0139)
+Morosidad del tipo (%),-0.0064 (0.0143),-0.0074 (0.0143),-0.0070 (0.0147),-0.0024 (0.0019)
+Tasa de referencia BCRP (%),0.0468** (0.0199),,,
+Efectos fijos,EF de unidad,EF de unidad y de mes,"EF de unidad y de mes, tasa rezagada",Primeras diferencias
+Observaciones,2818,2818,2681,2706
+Bancos (conglomerados),10,10,9,9
+R2 dentro,0.089,0.077,0.071,0.003

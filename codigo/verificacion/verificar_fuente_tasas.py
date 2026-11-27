@@ -44,8 +44,15 @@ from collections import Counter, defaultdict
 from datetime import datetime
 from pathlib import Path
 
-RAIZ = Path(__file__).resolve().parent.parent
-COD = Path(__file__).resolve().parent
+# Este script vive en codigo/verificacion/, un nivel mas abajo que los cuatro
+# del flujo principal, asi que la raiz del proyecto queda tres niveles arriba.
+RAIZ = Path(__file__).resolve().parent.parent.parent
+# La carpeta codigo/ no esta en la ruta de busqueda de Python cuando el script
+# se ejecuta desde aqui, de modo que hay que agregarla para poder importar
+# entidades.py y cargar 03_limpieza_datos.py.
+CODIGO = Path(__file__).resolve().parent.parent
+if str(CODIGO) not in sys.path:
+    sys.path.insert(0, str(CODIGO))
 ARCHIVO_SALIDA = RAIZ / "salidas" / "verificacion_fuente_tasas.txt"
 ARCHIVO_LOG = RAIZ / "log_ejecucion.txt"
 
@@ -53,7 +60,7 @@ ARCHIVO_LOG = RAIZ / "log_ejecucion.txt"
 # llamarse asi: "import 03_limpieza_datos" es un error de sintaxis. Por eso se
 # carga por ruta. Se reutiliza su codigo a proposito, para verificar el lector
 # de verdad y no una copia parecida que podria no tener el mismo defecto.
-_spec = importlib.util.spec_from_file_location("limpieza", COD / "03_limpieza_datos.py")
+_spec = importlib.util.spec_from_file_location("limpieza", CODIGO / "03_limpieza_datos.py")
 L = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(L)
 

@@ -1,0 +1,108 @@
+VERIFICACION DEL QUIEBRE DEL BANCO DE CREDITO EN ENERO DE 2025
+Generado el 2026-11-27 11:13:07
+Fuentes: B-2359-di2024.XLS y B-2359-en2025.XLS
+  sha256 B-2359-di2024.XLS: 6fdd5ba70f61ba894596d3f089909c0b817afa2eb925851221e4a982e9e1f11d
+  sha256 B-2359-en2025.XLS: 24bf9cd3c0075937d591c538abf9af1082202c3ff13683f7ec3590b27a58b905
+
+==============================================================================
+Banco de Credito del Peru, todas las modalidades
+==============================================================================
+
+CORPORATIVOS   (millones de soles, columna Total)
+  fila del cuadro                           dic-2024    ene-2025      cambio
+  TOTAL DEL TIPO                              40,923      40,866         -57
+  Sobregiros en cuenta corriente                 170         200         +30
+  Tarjetas de crédito                             14          16          +2
+  Descuentos                                     696         632         -64
+  Préstamos                                   28,635      28,641          +6
+  Factoring                                    2,966           0      -2,966  <--
+  Arrendamiento financiero y Lease-back        3,746       3,811         +65
+  Comercio exterior                            3,303       3,365         +62
+  Otros créditos corporativo                   1,393       4,201      +2,808
+
+  el factoring cae 2,966 millones; el total del tipo cambia -57 millones (-0.1 %)
+  la fila que mas sube es «Otros créditos corporativo» con +2,808 millones (95 % de la caida)
+  de cada sol que pierde el factoring, el total del tipo pierde 0.02
+  VEREDICTO: reclasificacion interna. El total del tipo se queda
+  donde estaba, asi que la cartera sigue en el balance y lo que
+  cambio fue la fila en que el banco la reporta.
+
+GRANDES EMPRESAS   (millones de soles, columna Total)
+  fila del cuadro                           dic-2024    ene-2025      cambio
+  TOTAL DEL TIPO                              13,485      13,295        -190
+  Sobregiros en cuenta corriente                 101         100          -1
+  Tarjetas de crédito                             18          19          +1
+  Descuentos                                   1,485       1,456         -29
+  Préstamos                                    9,163       9,099         -64
+  Factoring                                      262           0        -262  <--
+  Arrendamiento financiero y Lease-back        1,189       1,194          +5
+  Comercio exterior                              865         803         -63
+  Otros créditos a grandes empresas              402         625        +224
+
+  el factoring cae 262 millones; el total del tipo cambia -190 millones (-1.4 %)
+  la fila que mas sube es «Otros créditos a grandes empresas» con +224 millones (85 % de la caida)
+  de cada sol que pierde el factoring, el total del tipo pierde 0.72
+  VEREDICTO: mixto. Parte de la cartera cambio de fila y parte
+  dejo el balance. Hay que mirar el detalle fila por fila.
+
+MEDIANAS EMPRESAS   (millones de soles, columna Total)
+  fila del cuadro                           dic-2024    ene-2025      cambio
+  TOTAL DEL TIPO                               5,138       5,045         -93
+  Sobregiros en cuenta corriente                   5           6          +1
+  Tarjetas de crédito                             15          14          -0
+  Descuentos                                     517         495         -21
+  Préstamos                                    2,973       2,895         -78
+  Factoring                                       11           0         -11  <--
+  Arrendamiento financiero y Lease-back          289         285          -4
+  Comercio exterior                              302         293          -9
+  Otros créditos a medianas empresas           1,027       1,056         +29
+
+  el factoring cae 11 millones; el total del tipo cambia -93 millones (-1.8 %)
+  la fila que mas sube es «Otros créditos a medianas empresas» con +29 millones (263 % de la caida)
+  la caida del factoring es el 0.21 % de la cartera del tipo, por debajo del 1 % minimo
+  SIN VEREDICTO: el monto es demasiado pequeno. La variacion normal
+  de las otras filas de un mes a otro es mayor que la caida que se
+  quiere explicar, asi que cualquier conclusion seria ruido.
+
+PEQUENAS EMPRESAS   (millones de soles, columna Total)
+  fila del cuadro                           dic-2024    ene-2025      cambio
+  TOTAL DEL TIPO                              19,423      19,168        -255
+  Sobregiros en cuenta corriente                  46          45          -1
+  Tarjetas de crédito                            267         242         -24
+  Descuentos                                     722         633         -89
+  Préstamos                                   18,009      17,885        -124
+  Factoring                                        5           0          -5  <--
+  Arrendamiento financiero y Lease-back          245         237          -8
+  Comercio exterior                              113         105          -8
+  Otros créditos a pequeñas empresas              18          22          +4
+
+  el factoring cae 5 millones; el total del tipo cambia -255 millones (-1.3 %)
+  la fila que mas sube es «Otros créditos a pequeñas empresas» con +4 millones (95 % de la caida)
+  la caida del factoring es el 0.02 % de la cartera del tipo, por debajo del 1 % minimo
+  SIN VEREDICTO: el monto es demasiado pequeno. La variacion normal
+  de las otras filas de un mes a otro es mayor que la caida que se
+  quiere explicar, asi que cualquier conclusion seria ruido.
+
+==============================================================================
+LOS DEMAS BANCOS: variacion del factoring entre los dos meses
+==============================================================================
+  entidad                                   dic-2024    ene-2025      cambio
+  Banco de Credito del Peru                    3,244           0      -3,244  <-- se va a cero
+  Banco Santander Peru                           223         113        -110
+  Citibank                                       682         605         -77
+  Scotiabank Peru                              1,047         972         -74
+  BanBif                                         347         329         -18
+  BBVA Peru (antes Continental)                   25          25          -1
+  Banco Pichincha (antes Financiero)               1           1          -0
+  Alfin Banco (antes Azteca)                       0           0          +0
+  Bank of China                                    0           0          +0
+  BCI Peru                                         0           0          +0
+  BANCOM (antes Banco de Comercio)                 0           0          +0
+  Banco Falabella                                  0           0          +0
+  Banco GNB                                        0           0          +0
+  Banco ICBC                                       0           0          +0
+  Mibanco                                          0           0          +0
+  Banco Ripley                                     0           0          +0
+  Interbank                                    1,404       1,411          +7
+
+  total del sistema: 6,973 -> 3,456 millones (-3,517)
