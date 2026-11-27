@@ -1,0 +1,44 @@
+INFORME DE LIMPIEZA Y UNION
+Generado el 2026-11-26 19:23:48
+Periodo 2018-01 a 2025-12
+
+filas del panel desagregado        : 4743
+meses                              : 96
+entidades                          : 20
+tipos de credito                   : 3
+filas con monto negociado > 0      : 2760
+
+completitud de cada variable (filas con dato / total):
+  monto_negociado_miles          4743 /   4743  (100.0 %)
+  tasa_descuento_pct             2287 /   4743  ( 48.2 %)
+  deudores                       4413 /   4743  ( 93.0 %)
+  morosidad_factoring_pct        2008 /   4743  ( 42.3 %)
+  tasa_referencia_pct            4743 /   4743  (100.0 %)
+  tasa_tipo_pct                  3135 /   4743  ( 66.1 %)
+  morosidad_tipo_pct             3636 /   4743  ( 76.7 %)
+
+PROBLEMAS DE VALIDACION: 2
+  - tasa_tipo_pct fuera de rango plausible: 0.39 a 238.67
+  - morosidad_factoring_pct fuera de rango plausible: -0.00 a 100.00
+
+ENTIDADES Y MESES CON DATO
+  Alfin Banco (antes Azteca)                  96 meses    4 con monto > 0
+  Bank of China                               66 meses    0 con monto > 0
+  BBVA Peru (antes Continental)               96 meses   96 con monto > 0
+  BCI Peru                                    42 meses    0 con monto > 0
+  Banco Cencosud                              14 meses    0 con monto > 0
+  Citibank                                    96 meses   96 con monto > 0
+  BANCOM (antes Banco de Comercio)            96 meses   96 con monto > 0
+  Compartamos Banco                           12 meses    0 con monto > 0
+  Banco de Credito del Peru                   96 meses   96 con monto > 0
+  Banco Falabella                             96 meses    0 con monto > 0
+  Banco GNB                                   96 meses   96 con monto > 0
+  Banco ICBC                                  96 meses   55 con monto > 0
+  BanBif                                      96 meses   96 con monto > 0
+  Interbank                                   96 meses   96 con monto > 0
+  Mibanco                                     96 meses    0 con monto > 0
+  Banco Pichincha (antes Financiero)          96 meses   96 con monto > 0
+  Banco Ripley                                96 meses    0 con monto > 0
+  Banco Santander Peru                        96 meses   96 con monto > 0
+  Santander Consumer Bank                      7 meses    0 con monto > 0
+  Scotiabank Peru                             96 meses   96 con monto > 0
