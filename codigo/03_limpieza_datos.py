@@ -24,8 +24,8 @@ Entradas : datos_crudos/bcrp/*.csv                 tasa de referencia (via 1)
            datos_crudos/sbs_xls/B-230803-*.XLS     numero de deudores
            datos_crudos/sbs_tasas/tasas_*.html     tasas por empresa bancaria
 Salidas  : salidas/inventario_fuentes.txt          (modo inventario)
-           datos_procesados/panel_factoring.csv          (modo limpieza)
-           datos_procesados/panel_factoring_agregado.csv (modo limpieza)
+           datos_procesados/datos_procesados_<codigo>.csv          (modo limpieza)
+           datos_procesados/datos_procesados_<codigo>_agregado.csv (modo limpieza)
            salidas/informe_limpieza.txt                  (modo limpieza)
 
 Los datos crudos no se modifican nunca. Se abren solo para leer, y de cada uno
@@ -121,6 +121,12 @@ DIR_BCRP = RAIZ / "datos_crudos" / "bcrp"
 DIR_XLS = RAIZ / "datos_crudos" / "sbs_xls"
 DIR_TASAS = RAIZ / "datos_crudos" / "sbs_tasas"
 DIR_PROCESADOS = RAIZ / "datos_procesados"
+# El nombre del archivo procesado lo fija la consigna en el numeral 2.5:
+#   /datos_procesados: datos_procesados_<codigo>.csv
+# El panel agregado es un producto adicional y lleva el mismo nombre con un
+# sufijo, para que se vea que depende del principal y no compite con el.
+ARCHIVO_PANEL = DIR_PROCESADOS / f"datos_procesados_{MATRICULA}.csv"
+ARCHIVO_PANEL_AGREGADO = DIR_PROCESADOS / f"datos_procesados_{MATRICULA}_agregado.csv"
 DIR_SALIDAS = RAIZ / "salidas"
 ARCHIVO_LOG = RAIZ / "log_ejecucion.txt"
 ARCHIVO_INVENTARIO = DIR_SALIDAS / "inventario_fuentes.txt"
@@ -1138,13 +1144,13 @@ def limpiar() -> int:
     else:
         registrar("VALIDACION: sin problemas")
 
-    salida = DIR_PROCESADOS / "panel_factoring.csv"
+    salida = ARCHIVO_PANEL
     df.to_csv(salida, index=False, encoding="utf-8", lineterminator="\n")
     registrar(f"escrito {salida.name}: {len(df)} filas")
     registrar(f"  sha256 {sha256_archivo(salida)}")
 
     agregado = agregar(df)
-    salida_ag = DIR_PROCESADOS / "panel_factoring_agregado.csv"
+    salida_ag = ARCHIVO_PANEL_AGREGADO
     agregado.to_csv(salida_ag, index=False, encoding="utf-8", lineterminator="\n")
     registrar(f"escrito {salida_ag.name}: {len(agregado)} filas")
     registrar(f"  sha256 {sha256_archivo(salida_ag)}")

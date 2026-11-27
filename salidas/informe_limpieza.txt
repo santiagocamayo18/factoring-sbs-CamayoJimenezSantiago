@@ -1,5 +1,5 @@
 INFORME DE LIMPIEZA Y UNION
-Generado el 2026-11-27 01:56:16
+Generado el 2026-11-27 03:17:37
 Periodo 2018-01 a 2025-12
 
 filas del panel desagregado        : 6324
