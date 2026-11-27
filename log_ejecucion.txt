@@ -457,3 +457,44 @@
 [2026-11-25 23:27:27] 02_scraping_web | --- via 2b: tasas por empresa bancaria ---
 [2026-11-25 23:27:28] 02_scraping_web | via 2b: 0 guardados | 96 ya existian | 0 fallidos
 [2026-11-25 23:27:28] 02_scraping_web | fin correcto
+[2026-11-25 23:58:50] 03_limpieza_datos | inicio
+[2026-11-25 23:59:10] 03_limpieza_datos | B-2359 - Creditos directos por tip |  96 archivos |  35 entidades |  51 etiquetas | 0 anomalias
+[2026-11-25 23:59:10] 03_limpieza_datos | B-2362 - Morosidad por tipo de cre |  96 archivos |  34 entidades |  54 etiquetas | 0 anomalias
+[2026-11-25 23:59:10] 03_limpieza_datos | B-230803 - Numero de deudores segu |  96 archivos |  30 entidades |   9 etiquetas | 0 anomalias
+[2026-11-25 23:59:10] 03_limpieza_datos | Portal SAEE - Tasa activa por tipo |  96 archivos |  25 entidades |  25 etiquetas | 0 anomalias
+[2026-11-25 23:59:10] 03_limpieza_datos | archivos que faltan: 0
+[2026-11-25 23:59:10] 03_limpieza_datos | informe escrito en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\salidas\inventario_fuentes.txt
+[2026-11-25 23:59:10] 03_limpieza_datos | fin
+[2026-11-26 19:22:58] 03_limpieza_datos | inicio
+[2026-11-26 19:22:58] 03_limpieza_datos | BCRP: 96 meses desde PN07809NM_2018-2025_2024200488G.csv
+[2026-11-26 19:22:58] 03_limpieza_datos |   sha256 f14a6909d0236f5b802d0c5d485d1a1c4f034d6c6ca8badb3c9ced2b34a57d0b
+[2026-11-26 19:23:37] 03_limpieza_datos | union: 4743 filas, 20 entidades
+[2026-11-26 19:23:37] 03_limpieza_datos | filas del panel desagregado        : 4743
+[2026-11-26 19:23:37] 03_limpieza_datos | meses                              : 96
+[2026-11-26 19:23:37] 03_limpieza_datos | entidades                          : 20
+[2026-11-26 19:23:37] 03_limpieza_datos | tipos de credito                   : 3
+[2026-11-26 19:23:37] 03_limpieza_datos | filas con monto negociado > 0      : 2760
+[2026-11-26 19:23:37] 03_limpieza_datos | 
+[2026-11-26 19:23:37] 03_limpieza_datos | completitud de cada variable (filas con dato / total):
+[2026-11-26 19:23:37] 03_limpieza_datos |   monto_negociado_miles          4743 /   4743  (100.0 %)
+[2026-11-26 19:23:37] 03_limpieza_datos |   tasa_descuento_pct             2287 /   4743  ( 48.2 %)
+[2026-11-26 19:23:37] 03_limpieza_datos |   deudores                       4413 /   4743  ( 93.0 %)
+[2026-11-26 19:23:37] 03_limpieza_datos |   morosidad_factoring_pct        2008 /   4743  ( 42.3 %)
+[2026-11-26 19:23:37] 03_limpieza_datos |   tasa_referencia_pct            4743 /   4743  (100.0 %)
+[2026-11-26 19:23:37] 03_limpieza_datos |   tasa_tipo_pct                  3135 /   4743  ( 66.1 %)
+[2026-11-26 19:23:37] 03_limpieza_datos |   morosidad_tipo_pct             3636 /   4743  ( 76.7 %)
+[2026-11-26 19:23:37] 03_limpieza_datos | VALIDACION: 2 problemas
+[2026-11-26 19:23:37] 03_limpieza_datos |   - tasa_tipo_pct fuera de rango plausible: 0.39 a 238.67
+[2026-11-26 19:23:37] 03_limpieza_datos |   - morosidad_factoring_pct fuera de rango plausible: -0.00 a 100.00
+[2026-11-26 19:23:37] 03_limpieza_datos | escrito panel_factoring.csv: 4743 filas
+[2026-11-26 19:23:37] 03_limpieza_datos |   sha256 45659af20a6283c604c54db2e43d80455cb30c4d598ae71088a2c9ceb5ddcd5e
+[2026-11-26 19:23:48] 03_limpieza_datos | escrito panel_factoring_agregado.csv: 1581 filas
+[2026-11-26 19:23:48] 03_limpieza_datos |   sha256 b258f690877460d0d246e5260afc36052bb59ca34f1ecddef35632c3410675bb
+[2026-11-26 19:23:48] 03_limpieza_datos | informe escrito en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\salidas\informe_limpieza.txt
+[2026-11-26 19:23:48] 03_limpieza_datos | fin
+[2026-11-26 21:37:01] diagnostico_atipicos | inicio
+[2026-11-26 21:37:02] diagnostico_atipicos | informe escrito en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\salidas\diagnostico_atipicos.txt
+[2026-11-26 21:37:02] diagnostico_atipicos | fin
+[2026-11-26 23:04:59] verificar_fuente_tasas | inicio
+[2026-11-26 23:05:24] verificar_fuente_tasas | informe escrito en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\salidas\verificacion_fuente_tasas.txt
+[2026-11-26 23:05:24] verificar_fuente_tasas | fin
