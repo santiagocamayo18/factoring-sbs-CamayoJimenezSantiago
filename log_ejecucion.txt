@@ -498,3 +498,43 @@
 [2026-11-26 23:04:59] verificar_fuente_tasas | inicio
 [2026-11-26 23:05:24] verificar_fuente_tasas | informe escrito en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\salidas\verificacion_fuente_tasas.txt
 [2026-11-26 23:05:24] verificar_fuente_tasas | fin
+[2026-11-27 01:55:17] 03_limpieza_datos | inicio
+[2026-11-27 01:55:17] 03_limpieza_datos | BCRP: 96 meses desde PN07809NM_2018-2025_2024200488G.csv
+[2026-11-27 01:55:17] 03_limpieza_datos |   sha256 f14a6909d0236f5b802d0c5d485d1a1c4f034d6c6ca8badb3c9ced2b34a57d0b
+[2026-11-27 01:56:06] 03_limpieza_datos | union: 6324 filas, 20 entidades
+[2026-11-27 01:56:06] 03_limpieza_datos | filas del panel desagregado        : 6324
+[2026-11-27 01:56:06] 03_limpieza_datos | meses                              : 96
+[2026-11-27 01:56:06] 03_limpieza_datos | entidades                          : 20
+[2026-11-27 01:56:06] 03_limpieza_datos | tipos de credito                   : 4
+[2026-11-27 01:56:06] 03_limpieza_datos | filas con monto negociado > 0      : 3406
+[2026-11-27 01:56:06] 03_limpieza_datos | 
+[2026-11-27 01:56:06] 03_limpieza_datos | completitud de cada variable (filas con dato / total):
+[2026-11-27 01:56:06] 03_limpieza_datos |   monto_negociado_miles          6324 /   6324  (100.0 %)
+[2026-11-27 01:56:06] 03_limpieza_datos |   tasa_descuento_pct             2836 /   6324  ( 44.8 %)
+[2026-11-27 01:56:06] 03_limpieza_datos |   deudores                       5788 /   6324  ( 91.5 %)
+[2026-11-27 01:56:06] 03_limpieza_datos |   morosidad_factoring_pct        2258 /   6324  ( 35.7 %)
+[2026-11-27 01:56:06] 03_limpieza_datos |   tasa_referencia_pct            6324 /   6324  (100.0 %)
+[2026-11-27 01:56:06] 03_limpieza_datos |   tasa_tipo_pct                  3990 /   6324  ( 63.1 %)
+[2026-11-27 01:56:06] 03_limpieza_datos |   morosidad_tipo_pct             4763 /   6324  ( 75.3 %)
+[2026-11-27 01:56:06] 03_limpieza_datos | 
+[2026-11-27 01:56:06] 03_limpieza_datos | PRUEBA DE LA RECLASIFICACION DE OCTUBRE DE 2024
+[2026-11-27 01:56:06] 03_limpieza_datos |   Resolucion SBS 02368-2023, vigente desde 2024-10
+[2026-11-27 01:56:06] 03_limpieza_datos |   promedio de 2024-07..2024-09 contra 2024-10..2024-12
+[2026-11-27 01:56:06] 03_limpieza_datos | 
+[2026-11-27 01:56:06] 03_limpieza_datos |   tipo             monto antes  monto despues    cambio  deudores antes  deudores desp
+[2026-11-27 01:56:06] 03_limpieza_datos |   corporativo        6,661,241      7,761,815     16.5%           1,909          3,572
+[2026-11-27 01:56:06] 03_limpieza_datos |   grandes            5,111,543      3,691,084    -27.8%           9,131          9,227
+[2026-11-27 01:56:06] 03_limpieza_datos |   medianas           1,515,746      1,061,391    -30.0%          78,265         18,589
+[2026-11-27 01:56:06] 03_limpieza_datos |   pequenas             201,923        898,541    345.0%         383,527        435,826
+[2026-11-27 01:56:06] 03_limpieza_datos | 
+[2026-11-27 01:56:06] 03_limpieza_datos |   saldo neto de los cuatro tipos: -77,622 mil de soles (-0.6 % del mercado)
+[2026-11-27 01:56:06] 03_limpieza_datos |   El saldo neto es pequeno: lo que pierde un tipo lo gana otro, que es lo que predice la reclasificacion. El universo cierra.
+[2026-11-27 01:56:06] 03_limpieza_datos | VALIDACION: 2 problemas
+[2026-11-27 01:56:06] 03_limpieza_datos |   - tasa_tipo_pct fuera de rango plausible: 0.39 a 238.67
+[2026-11-27 01:56:06] 03_limpieza_datos |   - morosidad_factoring_pct fuera de rango plausible: -0.00 a 100.00
+[2026-11-27 01:56:06] 03_limpieza_datos | escrito panel_factoring.csv: 6324 filas
+[2026-11-27 01:56:06] 03_limpieza_datos |   sha256 d536314f2831052616ca07fe1029c2ea63167a701053665383074a81978a19a3
+[2026-11-27 01:56:16] 03_limpieza_datos | escrito panel_factoring_agregado.csv: 1581 filas
+[2026-11-27 01:56:16] 03_limpieza_datos |   sha256 787a7b5e0a7790ba36be79dc19795dc3c61515930d3ead438876f8b1f793154a
+[2026-11-27 01:56:16] 03_limpieza_datos | informe escrito en C:\Users\Santiago\github\factoring-sbs-CamayoJimenezSantiago\salidas\informe_limpieza.txt
+[2026-11-27 01:56:16] 03_limpieza_datos | fin

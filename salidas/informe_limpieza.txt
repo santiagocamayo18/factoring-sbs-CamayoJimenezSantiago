@@ -1,21 +1,34 @@
 INFORME DE LIMPIEZA Y UNION
-Generado el 2026-11-26 19:23:48
+Generado el 2026-11-27 01:56:16
 Periodo 2018-01 a 2025-12
 
-filas del panel desagregado        : 4743
+filas del panel desagregado        : 6324
 meses                              : 96
 entidades                          : 20
-tipos de credito                   : 3
-filas con monto negociado > 0      : 2760
+tipos de credito                   : 4
+filas con monto negociado > 0      : 3406
 
 completitud de cada variable (filas con dato / total):
-  monto_negociado_miles          4743 /   4743  (100.0 %)
-  tasa_descuento_pct             2287 /   4743  ( 48.2 %)
-  deudores                       4413 /   4743  ( 93.0 %)
-  morosidad_factoring_pct        2008 /   4743  ( 42.3 %)
-  tasa_referencia_pct            4743 /   4743  (100.0 %)
-  tasa_tipo_pct                  3135 /   4743  ( 66.1 %)
-  morosidad_tipo_pct             3636 /   4743  ( 76.7 %)
+  monto_negociado_miles          6324 /   6324  (100.0 %)
+  tasa_descuento_pct             2836 /   6324  ( 44.8 %)
+  deudores                       5788 /   6324  ( 91.5 %)
+  morosidad_factoring_pct        2258 /   6324  ( 35.7 %)
+  tasa_referencia_pct            6324 /   6324  (100.0 %)
+  tasa_tipo_pct                  3990 /   6324  ( 63.1 %)
+  morosidad_tipo_pct             4763 /   6324  ( 75.3 %)
+
+PRUEBA DE LA RECLASIFICACION DE OCTUBRE DE 2024
+  Resolucion SBS 02368-2023, vigente desde 2024-10
+  promedio de 2024-07..2024-09 contra 2024-10..2024-12
+
+  tipo             monto antes  monto despues    cambio  deudores antes  deudores desp
+  corporativo        6,661,241      7,761,815     16.5%           1,909          3,572
+  grandes            5,111,543      3,691,084    -27.8%           9,131          9,227
+  medianas           1,515,746      1,061,391    -30.0%          78,265         18,589
+  pequenas             201,923        898,541    345.0%         383,527        435,826
+
+  saldo neto de los cuatro tipos: -77,622 mil de soles (-0.6 % del mercado)
+  El saldo neto es pequeno: lo que pierde un tipo lo gana otro, que es lo que predice la reclasificacion. El universo cierra.
 
 PROBLEMAS DE VALIDACION: 2
   - tasa_tipo_pct fuera de rango plausible: 0.39 a 238.67

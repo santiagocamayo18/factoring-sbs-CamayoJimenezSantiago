@@ -59,12 +59,32 @@ ANIO_CORTE = 2025
 
 MODO_INVENTARIO = False
 
-# Tipos de credito que entran al panel. Los tres no minoristas concentran el
-# 92,3 % del saldo de factoring mas descuentos (verificado en enero de 2025).
-TIPOS_INCLUIDOS = ("corporativos", "grandes empresas", "medianas empresas")
+# Tipos de credito que entran al panel.
+#
+# Se incluye pequenas empresas, y no solo los tres no minoristas, por una razon
+# concreta: la Resolucion SBS 02368-2023, vigente desde el 01-10-2024, cambio
+# la definicion de credito a mediana empresa. Antes el criterio era una deuda
+# de S/ 300 000 o mas; ahora son ventas anuales de S/ 5 millones o mas, y los
+# deudores medianos que venden menos pasaron a pequena empresa.
+#
+# En los datos eso se ve como un escalon: entre set-2024 y oct-2024 medianas
+# pierde el 77 % de sus deudores y el 47 % de su monto. Si el panel se quedara
+# en los tres tipos no minoristas, esas empresas saldrian del universo en
+# octubre de 2024 y el quiebre contaminaria la serie. Incluyendo pequenas, el
+# universo queda cerrado: nadie entra ni sale, solo cambian de casilla.
+#
+# Microempresas queda fuera porque su factoring mas descuentos es 0,0 % del
+# mercado (verificado en enero de 2025) y solo agregaria filas en cero.
+TIPOS_INCLUIDOS = (
+    "corporativos", "grandes empresas", "medianas empresas", "pequenas empresas",
+)
 
-# Los mismos tres, con el identificador corto que usa el panel.
-TIPOS_INCLUIDOS_ID = ("corporativo", "grandes", "medianas")
+# Los mismos cuatro, con el identificador corto que usa el panel.
+TIPOS_INCLUIDOS_ID = ("corporativo", "grandes", "medianas", "pequenas")
+
+# Mes en que entro en vigencia la reclasificacion. Se usa para la prueba que
+# comprueba que lo que pierde medianas lo gana pequenas.
+MES_RECLASIFICACION = "2024-10"
 
 # Extension con la que la SBS publica sus cuadros. Es una constante y no un
 # literal repetido para poder probar los lectores contra copias convertidas
@@ -410,7 +430,7 @@ RAICES_TIPO = (
     ("corporativ", "corporativo"),
     ("grandes", "grandes"),
     ("medianas", "medianas"),
-    ("pequen", "otro"),
+    ("pequen", "pequenas"),
     ("micro", "otro"),
     ("consumo", "otro"),
     ("hipotecario", "otro"),
@@ -423,6 +443,7 @@ NOMBRES_TIPO = {
     "corporativo": "Corporativos",
     "grandes": "Grandes empresas",
     "medianas": "Medianas empresas",
+    "pequenas": "Pequenas empresas",
 }
 
 
@@ -989,6 +1010,74 @@ def resumen(df: pd.DataFrame) -> list[str]:
     return lineas
 
 
+def comprobar_reclasificacion(df: pd.DataFrame) -> list[str]:
+    """Mide el escalon de la Resolucion SBS 02368-2023 y si el universo cierra.
+
+    La hipotesis es concreta y falsable: si el 01-10-2024 las empresas con
+    ventas bajo S/ 5 millones pasaron de mediana a pequena empresa, entonces
+    lo que pierde medianas tiene que aparecer en pequenas, y la suma de los
+    cuatro tipos casi no debe moverse.
+
+    Si el saldo neto de los cuatro tipos sale cerca de cero, la reclasificacion
+    queda demostrada con los datos y el panel es comparable de punta a punta.
+    Si sale muy distinto de cero, hay algo mas que una reclasificacion y el
+    articulo tiene que decirlo en vez de suponerlo.
+
+    Compara el promedio de los tres meses previos con el de los tres
+    posteriores, en vez de un mes contra otro, para que un mes atipico no
+    decida el resultado.
+    """
+    antes = ("2024-07", "2024-08", "2024-09")
+    despues = ("2024-10", "2024-11", "2024-12")
+    if not set(antes + despues) <= set(df["fecha"]):
+        return ["  el periodo no cubre oct-2024: no se puede hacer la prueba"]
+
+    monto = pd.to_numeric(df["monto_negociado_miles"], errors="coerce")
+    deud = pd.to_numeric(df["deudores"], errors="coerce")
+
+    lineas = [
+        f"  Resolucion SBS 02368-2023, vigente desde {MES_RECLASIFICACION}",
+        f"  promedio de {antes[0]}..{antes[-1]} contra {despues[0]}..{despues[-1]}",
+        "",
+        f"  {'tipo':14s} {'monto antes':>13s} {'monto despues':>14s} {'cambio':>9s}"
+        f" {'deudores antes':>15s} {'deudores desp':>14s}",
+    ]
+    total_cambio = 0.0
+    for tipo in TIPOS_INCLUIDOS_ID:
+        en = df["tipo"] == tipo
+        m_a = monto[en & df["fecha"].isin(antes)].sum() / 3
+        m_d = monto[en & df["fecha"].isin(despues)].sum() / 3
+        d_a = deud[en & df["fecha"].isin(antes)].sum() / 3
+        d_d = deud[en & df["fecha"].isin(despues)].sum() / 3
+        total_cambio += m_d - m_a
+        pct = 100 * (m_d - m_a) / m_a if m_a else float("nan")
+        lineas.append(
+            f"  {tipo:14s} {m_a:13,.0f} {m_d:14,.0f} {pct:8.1f}%"
+            f" {d_a:15,.0f} {d_d:14,.0f}"
+        )
+
+    m_total = monto[df["fecha"].isin(antes)].sum() / 3
+    pct_total = 100 * total_cambio / m_total if m_total else float("nan")
+    lineas += [
+        "",
+        f"  saldo neto de los cuatro tipos: {total_cambio:+,.0f} mil de soles "
+        f"({pct_total:+.1f} % del mercado)",
+    ]
+    if abs(pct_total) < 5:
+        lineas.append(
+            "  El saldo neto es pequeno: lo que pierde un tipo lo gana otro, "
+            "que es lo que predice la reclasificacion. El universo cierra."
+        )
+    else:
+        lineas.append(
+            "  ATENCION: el saldo neto NO es pequeno. Ademas de la "
+            "reclasificacion hay un movimiento real de mercado, o se esta "
+            "escapando parte del universo. Hay que revisarlo antes de "
+            "interpretar la serie."
+        )
+    return lineas
+
+
 def agregar(df: pd.DataFrame) -> pd.DataFrame:
     """Colapsa el panel a la llave original fecha + entidad.
 
@@ -1033,8 +1122,13 @@ def limpiar() -> int:
 
     df = construir_panel()
     problemas = validar(df)
+    reclas = comprobar_reclasificacion(df)
 
     for linea in resumen(df):
+        registrar(linea)
+    registrar("")
+    registrar("PRUEBA DE LA RECLASIFICACION DE OCTUBRE DE 2024")
+    for linea in reclas:
         registrar(linea)
 
     if problemas:
@@ -1062,6 +1156,9 @@ def limpiar() -> int:
         f"Periodo {ANIO_INICIO}-01 a {ANIO_CORTE}-12",
         "",
     ] + resumen(df) + [
+        "",
+        "PRUEBA DE LA RECLASIFICACION DE OCTUBRE DE 2024",
+    ] + reclas + [
         "",
         f"PROBLEMAS DE VALIDACION: {len(problemas)}",
     ] + [f"  - {p}" for p in problemas] + [
